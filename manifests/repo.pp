@@ -1,5 +1,5 @@
 
-define opengrok::repo($git_url) {
+define opengrok::git::repo($git_url) {
   exec {
     "git clone of ${name}" :
       command => "git clone ${git_url} ${name}",
