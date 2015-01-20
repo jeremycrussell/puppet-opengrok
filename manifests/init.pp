@@ -9,19 +9,21 @@ class opengrok (
       $ctags = "ctags"
       $tomcatpkg = "tomcat"
       $tomcatsrvc = "tomcat"
+      $tomcatadm = "tomcat-admin-webapps"
     }
     debian, ubuntu: { 
       $gitpkg = "git-core" 
       $svnpkg = "svn"
       $ctags = "exuberant-ctags"
-      $tomcatpkg = ""
+      $tomcatpkg = "tomcat7"
       $tomcatsrvc = "tomcat7"
+      $tomcatadm = "tomcat7-admin"
     }
     default: { fail("Unrecognized operating system!") }
   }
     
   package {
-    ["$ctags", "$gitpkg"] :
+    [$ctags, $gitpkg] :
       ensure => present;
   }
 
@@ -41,7 +43,7 @@ class opengrok (
       command     => '/var/opengrok/bin/opengrok-indexer',
       path        => ['/usr/bin'],
       timeout     => 0,
-      notify      => Service["$tomcatsrvc"],
+      notify      => Service[$tomcatsrvc],
       require     => File['/var/opengrok/bin/opengrok-indexer'];
   }
 
