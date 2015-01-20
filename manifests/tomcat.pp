@@ -1,4 +1,10 @@
 class opengrok::tomcat (
+  $gitpkg = $opengrok::gitpkg,
+  $svnpkg = $opengrok::svnpkg,
+  $ctags = $opengrok::ctags,
+  $tomcatpkg = $opengrok::tomcatpkg,
+  $tomcatsrvc = $opengrok::tomcatsrvc,
+  $tomcatadm = $opengrok::tomcatadm
 ) {
   require opengrok::files
   package {
