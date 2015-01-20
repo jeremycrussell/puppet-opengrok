@@ -2,7 +2,7 @@
 define opengrok::repo($repo_url) {
   if $repo_url =~ /git/ {
     opengrok::git::repo { "$name": 
-     git_url => "$repo_url" 
+      git_url => "$repo_url" 
     }
   } elsif $repo_url =~ /svn/ {
     opengrok::svn::repo { "$name":
@@ -22,11 +22,11 @@ define opengrok::git::repo($git_url) {
       unless  => "test -d ${opengrok::dirs::base_path}/source/${name}",
       timeout => 0,
       notify  => [
-        Service['tomcat7'],
+        Service[$tomcatsrvc],
         Exec['opengrok-reindex']],
       require => [
         File[$opengrok::dirs::base_path],
-        Package['git-core']];
+        Package[$gitpkg]];
   }
 }
 
@@ -39,10 +39,10 @@ define opengrok::svn::repo($svn_url) {
       unless  => "test -d ${opengrok::dirs::base_path}/source/${name}",
       timeout => 0,
       notify  => [
-        Serive['tomcat7'],
+        Serive[$tomcatsrvc],
         Exec['opengrok-reindex]],
       require => [
         File[$opengrok::dirs::base_path],
-        Package['svn']];
+        Package[$svnpkg]];
   }
 }
