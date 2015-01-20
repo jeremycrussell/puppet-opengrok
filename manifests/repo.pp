@@ -1,5 +1,13 @@
 
-define opengrok::repo($repo_url) {
+define opengrok::repo(
+  $repo_url,
+  $gitpkg = $opengrok::gitpkg,
+  $svnpkg = $opengrok::svnpkg,
+  $ctags = $opengrok::ctags,
+  $tomcatpkg = $opengrok::tomcatpkg,
+  $tomcatsrvc = $opengrok::tomcatsrvc,
+  $tomcatadm = $opengrok::tomcatadm
+) {
   if $repo_url =~ /git/ {
     opengrok::git::repo { "$name": 
       git_url => "$repo_url" 
@@ -13,7 +21,15 @@ define opengrok::repo($repo_url) {
   }
 }
 
-define opengrok::git::repo($git_url) {
+define opengrok::git::repo(
+  $git_url,
+  $gitpkg = $opengrok::gitpkg,
+  $svnpkg = $opengrok::svnpkg,
+  $ctags = $opengrok::ctags,
+  $tomcatpkg = $opengrok::tomcatpkg,
+  $tomcatsrvc = $opengrok::tomcatsrvc,
+  $tomcatadm = $opengrok::tomcatadm
+  ) {
   exec {
     "git clone of ${name}" :
       command => "git clone ${git_url} ${name}",
@@ -30,7 +46,15 @@ define opengrok::git::repo($git_url) {
   }
 }
 
-define opengrok::svn::repo($svn_url) {
+define opengrok::svn::repo( 
+  $svn_url,
+  $gitpkg = $opengrok::gitpkg,
+  $svnpkg = $opengrok::svnpkg,
+  $ctags = $opengrok::ctags,
+  $tomcatpkg = $opengrok::tomcatpkg,
+  $tomcatsrvc = $opengrok::tomcatsrvc,
+  $tomcatadm = $opengrok::tomcatadm
+) {
   exec {
     "svn checkout of ${name}" :
       command => "svn checkout ${svn_url}",
