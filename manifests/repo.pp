@@ -34,7 +34,7 @@ define opengrok::git::repo(
     "git clone of ${name}" :
       command => "git clone ${git_url} ${name}",
       cwd     => "${opengrok::dirs::base_path}/source",
-      path    => ['/bin', '/usr/bin'],
+      path    => "/bin:/sbin:/usr/bin:/usr/sbin",
       unless  => "test -d ${opengrok::dirs::base_path}/source/${name}",
       timeout => 0,
       notify  => [
@@ -59,7 +59,7 @@ define opengrok::svn::repo(
     "svn checkout of ${name}" :
       command => "svn checkout ${svn_url}",
       cwd     => "${opengrok::dirs::base_path}/source"
-      path    => ['/bin', '/usr/bin'],
+      path    => "/bin:/sbin:/usr/bin:/usr/sbin",
       unless  => "test -d ${opengrok::dirs::base_path}/source/${name}",
       timeout => 0,
       notify  => [
