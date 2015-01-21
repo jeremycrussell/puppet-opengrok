@@ -23,7 +23,7 @@ class opengrok (
   }
     
   package {
-    [$ctags, $gitpkg] :
+    [$ctags, $gitpkg, $svnpkg] :
       ensure => present;
   }
 
