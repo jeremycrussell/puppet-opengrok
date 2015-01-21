@@ -63,7 +63,7 @@ define opengrok::svn::repo(
       unless  => "test -d ${opengrok::dirs::base_path}/source/${name}",
       timeout => 0,
       notify  => [
-        Serive[$tomcatsrvc],
+        Service[$tomcatsrvc],
         Exec['opengrok-reindex']],
       require => [
         File[$opengrok::dirs::base_path],
