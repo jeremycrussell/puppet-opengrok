@@ -58,7 +58,7 @@ define opengrok::svn::repo(
   exec {
     "svn checkout of ${name}" :
       command => "svn checkout ${svn_url}",
-      cwd     => "${opengrok::dirs::base_path}/source"
+      cwd     => "${opengrok::dirs::base_path}/source",
       path    => "/bin:/sbin:/usr/bin:/usr/sbin",
       unless  => "test -d ${opengrok::dirs::base_path}/source/${name}",
       timeout => 0,
