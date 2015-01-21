@@ -64,7 +64,7 @@ define opengrok::svn::repo(
       timeout => 0,
       notify  => [
         Serive[$tomcatsrvc],
-        Exec['opengrok-reindex]],
+        Exec['opengrok-reindex']],
       require => [
         File[$opengrok::dirs::base_path],
         Package[$svnpkg]];
