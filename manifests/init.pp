@@ -5,7 +5,7 @@ class opengrok (
   case $operatingsystem {
     centos, redhat: { 
       $gitpkg = "git" 
-      $svnpkg = "subversion"
+      $svnpkg = "subversion.${architecture}"
       $ctags = "ctags"
       $tomcatpkg = "tomcat"
       $tomcatsrvc = "tomcat"
