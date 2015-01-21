@@ -42,7 +42,7 @@ define opengrok::git::repo(
         Exec['opengrok-reindex']],
       require => [
         File[$opengrok::dirs::base_path],
-        Package["$gitpkg"]];
+        Package[$gitpkg]];
   }
 }
 
@@ -67,6 +67,6 @@ define opengrok::svn::repo(
         Exec['opengrok-reindex']],
       require => [
         File[$opengrok::dirs::base_path],
-        Package["$svnpkg"]];
+        Package[$svnpkg]];
   }
 }
