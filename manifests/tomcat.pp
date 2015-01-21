@@ -22,6 +22,7 @@ class opengrok::tomcat (
 
   service {
     $tomcatsrvc :
+      ensure => 'running',
       hasrestart => true,
       hasstatus  => true,
       require    => Package[$tomcatpkg];
