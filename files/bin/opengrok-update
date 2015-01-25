@@ -4,6 +4,7 @@ BASE_DIR=/var/opengrok/source
 
 for d in ${BASE_DIR}/*; do
   (cd $d && if [ -d .git ]; then git pull --rebase; fi)
+  (cd $d && if [ -d .svn ]; then svn update; fi)
 done
 
 nice -n 19 /var/opengrok/bin/opengrok-indexer
