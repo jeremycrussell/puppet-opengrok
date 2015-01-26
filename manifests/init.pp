@@ -22,7 +22,7 @@ class opengrok (
     default: { fail("Unrecognized operating system!") }
   }
   
-  ensure_packages($ctags, $gitpkg, $svnpkg)
+  ensure_packages([$ctags, $gitpkg, $svnpkg])
 
   create_resources(opengrok::repo, $repos)
 
