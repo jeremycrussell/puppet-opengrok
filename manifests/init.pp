@@ -51,6 +51,6 @@ class opengrok (
     'update-opengrok-repos' :
       command => '/var/opengrok/bin/opengrok-update',
       user    => root,
-      minute  => '*/10',
+      minute  => '10',
   }
 }
