@@ -22,7 +22,11 @@ class opengrok (
     default: { fail("Unrecognized operating system!") }
   }
   
-  ensure_packages([$ctags, $gitpkg, $svnpkg])
+  # ? not sure if this is working
+  #ensure_packages([$ctags, $gitpkg, $svnpkg])
+  if ! defined (Package[$ctags]) { package { $ctags: ensure => 'installed' } }
+  if ! defined (Package[$gitpkg]) { package { $gitpkg: ensure => 'installed' } }
+  if ! defined (Package[$svnpkg]) { package { $svnpkg: ensure => 'installed' } }
 
   create_resources(opengrok::repo, $repos)
 
