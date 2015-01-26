@@ -22,7 +22,7 @@ class opengrok (
     default: { fail("Unrecognized operating system!") }
   }
   
-  if ! defined (Package[$ctags, $gitpkg, $svnpkg])
+  if ! defined (Package[$ctags, $gitpkg, $svnpkg]) {
     package {
       [$ctags, $gitpkg, $svnpkg] :
         ensure => present;
