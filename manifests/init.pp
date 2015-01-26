@@ -53,5 +53,6 @@ class opengrok (
       command => '/var/opengrok/bin/opengrok-update',
       user    => root,
       minute  => '10',
+      hour    => '*/6',
   }
 }
