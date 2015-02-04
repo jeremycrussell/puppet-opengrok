@@ -2,7 +2,7 @@
 
 BASE_DIR=/var/opengrok
 
-java -Xmx7048m -jar ${BASE_DIR}/bin/opengrok.jar \
+java -Xmx2048m -jar ${BASE_DIR}/bin/opengrok.jar \
           -W ${BASE_DIR}/etc/configuration.xml \
           -P \
           -S \
