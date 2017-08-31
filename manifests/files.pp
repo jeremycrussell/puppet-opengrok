@@ -28,7 +28,7 @@ class opengrok::files (
   file {
     "${bin_path}/OpenGrok" :
       ensure => link,
-      mode   => 0555,
+      mode   => '0555',
       target => "${bin_path}/${folder}/bin/OpenGrok";
 
     "${bin_path}/source.war" :
@@ -41,12 +41,12 @@ class opengrok::files (
 
     "${bin_path}/opengrok-indexer" :
       ensure => present,
-      mode   => 0555,
+      mode   => '0555',
       source => 'puppet:///modules/opengrok/bin/opengrok-indexer';
 
     "${bin_path}/opengrok-update" :
       ensure => present,
-      mode   => 0555,
+      mode   => '0555',
       source => 'puppet:///modules/opengrok/bin/opengrok-update';
 
     "${bin_path}/lib":
